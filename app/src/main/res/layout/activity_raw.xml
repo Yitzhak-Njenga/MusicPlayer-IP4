@@ -6,8 +6,8 @@
     android:layout_marginTop="50dp">
 
     <ImageView
-        android:layout_width="130dp"
-        android:layout_height="100dp"
+        android:layout_width="130sp"
+        android:layout_height="100sp"
         android:id="@+id/albumImageView"
         android:scaleType="centerCrop"
         android:src="@drawable/album"/>
