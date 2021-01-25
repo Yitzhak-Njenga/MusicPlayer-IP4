@@ -1,6 +1,7 @@
 package com.moringaschool.musicplayer.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.moringaschool.musicplayer.PlayerActivity;
 import com.moringaschool.musicplayer.R;
 
 import com.moringaschool.musicplayer.models.Item;
@@ -50,6 +52,11 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.AlbumsView
             mTittleTextView.setText(artist.getSnippet().getChannelTitle());
             mAlbumLink.setText(artist.getSnippet().getDescription());
 
+
+
+
+
+
         }
 
     }
@@ -72,6 +79,14 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.AlbumsView
     @Override
     public void onBindViewHolder(@NonNull AlbumsAdapter.AlbumsViewHolder holder, int position){
         holder.bindAlbums(mArtists.get(position));
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), PlayerActivity.class);
+
+            }
+        });
 
 
     }
