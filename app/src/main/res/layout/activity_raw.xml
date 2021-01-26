@@ -6,12 +6,13 @@
     android:layout_marginTop="50dp"
     android:id="@+id/albumRecycle">
 
-    <ImageView
+    <TextView
         android:layout_width="130sp"
         android:layout_height="100sp"
         android:id="@+id/albumImageView"
         android:scaleType="centerCrop"
-        android:src="@drawable/album"/>
+        android:src="@drawable/album"
+        />
     <LinearLayout
         android:layout_width="281dp"
         android:layout_height="wrap_content"

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,6 +38,7 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.AlbumsView
         @BindView(R.id.titleTextView) TextView mTittleTextView;
         @BindView(R.id.artistNameView) TextView mArtistName;
         @BindView(R.id.alumLink) TextView mAlbumLink;
+        @BindView(R.id.albumImageView) TextView mCoverImage;
 
         private Context mContext;
 
@@ -51,6 +53,9 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.AlbumsView
             mArtistName.setText(artist.getSnippet().getTitle());
             mTittleTextView.setText(artist.getSnippet().getChannelTitle());
             mAlbumLink.setText(artist.getSnippet().getDescription());
+            mCoverImage.setText(artist.getSnippet().getThumbnails().getMedium().getUrl());
+
+
 
 
 
@@ -84,6 +89,15 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.AlbumsView
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), PlayerActivity.class);
+
+
+                intent.putExtra("song",holder.mTittleTextView.getText().toString());
+                intent.putExtra("link",holder.mAlbumLink.getText().toString());
+                intent.putExtra("artist",holder.mArtistName.getText().toString());
+                intent.putExtra(" cover_image",holder.mCoverImage.getText().toString());
+
+                view.getContext().startActivity(intent);
+
 
             }
         });
