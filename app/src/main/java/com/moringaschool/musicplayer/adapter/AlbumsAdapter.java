@@ -16,6 +16,7 @@ import com.moringaschool.musicplayer.R;
 
 import com.moringaschool.musicplayer.models.Item;
 import com.moringaschool.musicplayer.models.Snippet;
+import com.squareup.picasso.Picasso;
 
 
 import java.util.List;
@@ -38,9 +39,10 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.AlbumsView
         @BindView(R.id.titleTextView) TextView mTittleTextView;
         @BindView(R.id.artistNameView) TextView mArtistName;
         @BindView(R.id.alumLink) TextView mAlbumLink;
-        @BindView(R.id.albumImageView) TextView mCoverImage;
+        @BindView(R.id.albumImageView) ImageView mCoverImage;
 
         private Context mContext;
+
 
         public AlbumsViewHolder(View itemView){
             super(itemView);
@@ -50,10 +52,14 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.AlbumsView
         }
 
         public  void bindAlbums(Item artist){
+
+
             mArtistName.setText(artist.getSnippet().getTitle());
             mTittleTextView.setText(artist.getSnippet().getChannelTitle());
             mAlbumLink.setText(artist.getSnippet().getDescription());
-            mCoverImage.setText(artist.getSnippet().getThumbnails().getMedium().getUrl());
+//            mCoverImage.setText(artist.getSnippet().getThumbnails().getMedium().getUrl());
+            Picasso.get().load(artist.getSnippet().getThumbnails().getMedium().getUrl()).into(mCoverImage);
+
 
 
 
@@ -94,7 +100,8 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.AlbumsView
                 intent.putExtra("song",holder.mTittleTextView.getText().toString());
                 intent.putExtra("link",holder.mAlbumLink.getText().toString());
                 intent.putExtra("artist",holder.mArtistName.getText().toString());
-                intent.putExtra(" cover_image",holder.mCoverImage.getText().toString());
+//                intent.putExtra(" cover_image",holder.mCoverImage.getText().toString());
+
 
                 view.getContext().startActivity(intent);
 

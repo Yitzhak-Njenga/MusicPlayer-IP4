@@ -5,13 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PlayerActivity"
+    android:background="@drawable/music_bar"
     >
 
     <ImageView
-        android:layout_width="500dp"
+        android:id="@+id/coverImageView"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:src="@drawable/music_bar"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"/>
+
+
+    <TextView
+        android:layout_marginTop="500dp"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:id="@+id/song_name"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/song_name"
+        android:textAlignment="center"
+        android:id="@+id/song_title"
+        android:gravity="center_horizontal" />
+
 
 </RelativeLayout>
