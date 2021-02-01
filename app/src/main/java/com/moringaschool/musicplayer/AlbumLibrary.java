@@ -1,12 +1,20 @@
 package com.moringaschool.musicplayer;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.moringaschool.musicplayer.adapter.AlbumsAdapter;
@@ -34,10 +42,22 @@ public class AlbumLibrary extends AppCompatActivity {
     @BindView(R.id.albumRecycle) RecyclerView mAlbumRecyclerView;
     @BindView(R.id.errorText) TextView mErrorText;
 
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
+    private String mRecentArtist;
+
     private AlbumsAdapter mAlbumsAdapter;
     private List<Item> artists;
 
-
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.my_menu,menu);
+//        ButterKnife.bind(this);
+//
+//        MenuItem menuItem = menu.findItem(R.id.search_icon);
+//        SearchView searchView =(SearchView) MenuItemCompat.getActionView(menuItem);
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +87,10 @@ public class AlbumLibrary extends AppCompatActivity {
 
                 }
             }
+
+
+
+
 
             @Override
             public void onFailure(Call<YoutubeSongs> call, Throwable t) {
